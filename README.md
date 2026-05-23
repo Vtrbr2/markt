@@ -354,3 +354,75 @@ apps/backend/src/modules/payments/
 └── entities/
     └── payment.entity.ts                (já existe)
 ```
+## Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+✅ Etapa 4 - Produtos e Categorias (CRUD, Listagem, Filtros, Paginação)
+✅ Etapa 5 - Upload de Imagens (Local + Abstração p/ Cloudinary/Supabase/Firebase/S3)
+✅ Etapa 6 - Carrinho e Pedidos (Adicionar, Finalizar, Status, Estoque)
+✅ Etapa 7 - Pagamentos (Interface desacoplada, Mercado Pago, Fake Gateway)
+
+## Próximas Etapas
+⏳ Etapa 8 - Frontend Público
+⏳ Etapa 9 - Painel do Vendedor
+⏳ Etapa 10 - Painel Administrativo
+⏳ Etapa 11 - Segurança, Validações e Deploy
+
+ETAPA 8 – Frontend Público
+
+apps/frontend/src/
+├── app/
+│   ├── layout.tsx                    (atualizar - adicionar Navbar/Footer)
+│   ├── page.tsx                      (atualizar - Home com destaques)
+│   ├── globals.css                   (já existe, manter)
+│   ├── (auth)/
+│   │   ├── login/
+│   │   │   └── page.tsx
+│   │   └── cadastro/
+│   │       └── page.tsx
+│   ├── produto/
+│   │   └── [id]/
+│   │       └── page.tsx
+│   ├── busca/
+│   │   └── page.tsx
+│   ├── carrinho/
+│   │   └── page.tsx
+│   ├── checkout/
+│   │   └── page.tsx
+│   └── (account)/
+│       ├── meus-pedidos/
+│       │   └── page.tsx
+│       └── perfil/
+│           └── page.tsx
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   ├── ui/
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   ├── Select.tsx
+│   │   └── StarRating.tsx
+│   ├── product/
+│   │   ├── ProductCard.tsx
+│   │   └── ProductGrid.tsx
+│   ├── cart/
+│   │   └── CartItem.tsx
+│   └── order/
+│       └── OrderCard.tsx
+├── contexts/
+│   ├── AuthContext.tsx
+│   └── CartContext.tsx
+├── services/
+│   └── api.ts
+├── hooks/
+│   ├── useAuth.ts
+│   └── useCart.ts
+├── types/
+│   └── index.ts
+└── lib/
+    └── utils.ts
+   
+
+   # 8.1 – Tipagens TypeScript
