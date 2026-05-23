@@ -589,3 +589,161 @@ Arquivo: apps/frontend/next.config.js
 11.7 – Frontend: .env.production
 Arquivo: apps/frontend/.env.production
 
+11.10 – Checklist de Validações e Segurança
+Área	O que foi feito
+Autenticação	JWT com refresh token, bcrypt (12 rounds), guards de role
+Validação de entrada	class-validator em todos os DTOs, whitelist: true no ValidationPipe global
+Headers HTTP	Helmet no backend, headers de segurança no Next.js
+CORS	Restrito à URL do frontend
+Rate limiting	Express-rate-limit: 200 req/15min por IP
+Tratamento de erros	Filtro global que não expõe stack em produção
+Respostas padronizadas	Interceptor { success, data, timestamp }
+Upload	Validação de tipo (imagens), limite de tamanho (5 MB), nomes aleatórios
+Senhas	Hash bcrypt com salt 12, nunca retornadas na API
+Variáveis de ambiente	.env.example documentado, .env no .gitignore
+Docker	Backend, frontend e banco em containers com volumes persistentes
+
+
+11.11 – Instruções de Deploy
+Opção 1 – VPS com Docker:
+
+```
+# Na raiz do projeto
+docker-compose up -d --build
+
+# Rodar migrações
+docker exec marketplace-backend npm run migration:run
+docker exec marketplace-backend npm run seed
+```
+
+Opção 2 – Vercel (frontend) + Railway (backend + banco):
+
+Frontend: conectar repositório no Vercel, build automático, definir NEXT_PUBLIC_API_URL
+
+Backend: deploy no Railway com PostgreSQL integrado, definir variáveis de ambiente
+
+Opção 3 – Servidor dedicado:
+
+Backend: npm run build && npm run start com PM2
+
+Frontend: npm run build && npm run start com PM2
+
+Banco: PostgreSQL em servidor próprio
+
+Nginx como proxy reverso com HTTPS (Let's Encrypt)
+
+
+
+✅ Etapa 11 concluída – Projeto Finalizado
+
+# Marketplace - Projeto Completo
+
+Plataforma de marketplace multi-vendedor, inspirada em Mercado Livre, Shopee e OLX.
+
+## Tecnologias
+- **Frontend:** Next.js 14, React 18, Tailwind CSS, Axios, React Query
+- **Backend:** NestJS, TypeORM, PostgreSQL, JWT, Multer
+- **Infra:** Docker, Docker Compose
+
+## Funcionalidades
+- 🔐 Autenticação JWT com refresh token
+- 👥 Tipos de conta: Comprador, Vendedor, Administrador
+- 📦 CRUD de produtos com variações e upload de imagens
+- 🛒 Carrinho de compras
+- 📋 Pedidos com máquina de estados
+- 💳 Pagamentos com interface desacoplada (Mercado Pago / Fake)
+- ⭐ Avaliações de produtos e vendedores
+- 🔍 Busca e filtros com paginação
+- 📊 Painel do Vendedor (dashboard, produtos, vendas)
+- 🛡️ Painel Administrativo (gerenciar usuários, produtos, pedidos)
+
+## Estrutura
+
+marketplace/
+├── apps/
+│ ├── backend/ # NestJS API REST
+│ └── frontend/ # Next.js App Router
+├── docker-compose.yml
+└── README.md
+
+
+## Como rodar localmente
+
+### Pré-requisitos
+- Node.js 20+
+- PostgreSQL 16+ (ou Docker)
+- Git
+
+### Passos
+```
+1. Clone o repositório
+2. Backend:
+   ```bash
+   cd apps/backend
+   cp .env.example .env
+   npm install
+   npm run migration:run
+   npm run seed
+   npm run dev
+
+   ```
+
+Frontend:
+
+```
+cd apps/frontend
+cp .env.local.example .env.local
+npm install
+npm run dev
+```
+
+Acesse http://localhost:3000
+
+**Docker**
+
+```
+docker-compose up -d --build
+docker exec marketplace-backend npm run migration:run
+docker exec marketplace-backend npm run seed
+```
+
+Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+✅ Etapa 4 - Produtos e Categorias (CRUD, Listagem, Filtros, Paginação)
+✅ Etapa 5 - Upload de Imagens (Local + Abstração p/ Cloudinary/Supabase/Firebase/S3)
+✅ Etapa 6 - Carrinho e Pedidos (Adicionar, Finalizar, Status, Estoque)
+✅ Etapa 7 - Pagamentos (Interface desacoplada, Mercado Pago, Fake Gateway)
+✅ Etapa 8 - Frontend Público (Home, Busca, Produto, Carrinho, Checkout, Pedidos, Perfil)
+✅ Etapa 9 - Painel do Vendedor (Dashboard, Produtos c/ Upload, Vendas, Loja)
+✅ Etapa 10 - Painel Administrativo (Dashboard, Gerenciar Usuários/Produtos/Pedidos, Logs)
+✅ Etapa 11 - Segurança, Validações e Deploy (Helmet, Rate Limit, Docker, .env.example)
+
+Admin padrão
+Email: admin@marketplace.com
+
+Senha: Admin123!
+
+
+---
+
+### 🎉 Projeto completo!
+
+As 11 etapas foram concluídas:
+
+| # | Etapa | Status |
+|---|-------|--------|
+| 1 | Setup do Monorepo | ✅ |
+| 2 | Banco de Dados | ✅ |
+| 3 | Autenticação | ✅ |
+| 4 | Produtos e Categorias | ✅ |
+| 5 | Upload de Imagens | ✅ |
+| 6 | Carrinho e Pedidos | ✅ |
+| 7 | Pagamentos | ✅ |
+| 8 | Frontend Público | ✅ |
+| 9 | Painel do Vendedor | ✅ |
+| 10 | Painel Administrativo | ✅ |
+| 11 | Segurança, Validações e Deploy | ✅ |
+
+O marketplace está **pronto para produção**. Agora é só ajustar detalhes visuais, configurar um gateway de pagamento real, colocar no ar e começar a vender! 🚀
