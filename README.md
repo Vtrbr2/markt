@@ -266,3 +266,71 @@ useClass: CloudinaryProvider
 ⏳ Etapa 9 - Painel do Vendedor
 ⏳ Etapa 10 - Painel Administrativo
 ⏳ Etapa 11 - Segurança, Validações e Deploy
+
+Estrutura da Etapa 6
+
+ o comprador adiciona produtos ao carrinho, revisa e finaliza a compra, gerando um pedido com status, controle de estoque e snapshot dos produtos.
+ ```
+apps/backend/src/modules/
+├── cart/
+│   ├── cart.module.ts
+│   ├── cart.controller.ts
+│   ├── cart.service.ts
+│   ├── dto/
+│   │   ├── add-cart-item.dto.ts
+│   │   └── update-cart-item.dto.ts
+│   └── entities/
+│       ├── cart.entity.ts       (já existe)
+│       └── cart-item.entity.ts  (já existe)
+└── orders/
+    ├── orders.module.ts
+    ├── orders.controller.ts
+    ├── orders.service.ts
+    ├── dto/
+    │   ├── create-order.dto.ts
+    │   └── update-order-status.dto.ts
+    └── entities/
+        ├── order.entity.ts      (já existe)
+        └── order-item.entity.ts (já existe)
+```
+
+6.1 – Módulo de Carrinho
+apps/backend/src/modules/cart/dto/add-cart-item.dto.ts
+
+apps/backend/src/modules/cart/dto/update-cart-item.dto.ts
+
+apps/backend/src/modules/cart/cart.service.ts
+
+apps/backend/src/modules/cart/cart.controller.ts
+
+apps/backend/src/modules/cart/cart.module.ts
+
+6.2 – Módulo de Pedidos
+apps/backend/src/modules/orders/dto/create-order.dto.ts
+
+apps/backend/src/modules/orders/dto/update-order-status.dto.ts
+
+apps/backend/src/modules/orders/orders.service.ts
+
+apps/backend/src/modules/orders/orders.controller.ts
+
+apps/backend/src/modules/orders/orders.module.ts
+
+6.3 – Atualizar AppModule
+
+etc...
+
+## Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+✅ Etapa 4 - Produtos e Categorias (CRUD, Listagem, Filtros, Paginação)
+✅ Etapa 5 - Upload de Imagens (Local + Abstração p/ Cloudinary/Supabase/Firebase/S3)
+✅ Etapa 6 - Carrinho e Pedidos (Adicionar, Finalizar, Status, Estoque)
+
+## Próximas Etapas
+⏳ Etapa 7 - Pagamentos
+⏳ Etapa 8 - Frontend Público
+⏳ Etapa 9 - Painel do Vendedor
+⏳ Etapa 10 - Painel Administrativo
+⏳ Etapa 11 - Segurança, Validações e Deploy
