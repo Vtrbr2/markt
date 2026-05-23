@@ -54,3 +54,17 @@ Vamos criar as entidades dentro de cada módulo, conforme planejamento. Por enqu
 
 2.3 Configurar o TypeORM no AppModule
 Precisamos importar as entidades no módulo principal para o autoLoadEntities encontrá-las. Basta ter as classes decoradas com @Entity() e importar os módulos que as contêm no futuro. Por enquanto, o autoLoadEntities: true já as localiza se os módulos forem carregados. Vamos manter assim.
+
+2.4 Gerar e rodar a primeira migração
+Com as entidades definidas, abra o terminal em apps/backend e execute:
+```
+bash
+npm run migration:generate --name=InitialCreate
+```
+Isso criará uma migração em src/database/migrations. Em seguida, rode:
+```
+bash
+npm run migration:run
+As tabelas serão criadas no banco de dados PostgreSQL.
+```
+
