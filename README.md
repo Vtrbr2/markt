@@ -523,3 +523,50 @@ apps/frontend/src/app/(admin)/
 
 10.1 – Backend: Admin Module
 etc...
+
+## Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+✅ Etapa 4 - Produtos e Categorias (CRUD, Listagem, Filtros, Paginação)
+✅ Etapa 5 - Upload de Imagens (Local + Abstração p/ Cloudinary/Supabase/Firebase/S3)
+✅ Etapa 6 - Carrinho e Pedidos (Adicionar, Finalizar, Status, Estoque)
+✅ Etapa 7 - Pagamentos (Interface desacoplada, Mercado Pago, Fake Gateway)
+✅ Etapa 8 - Frontend Público (Home, Busca, Produto, Carrinho, Checkout, Pedidos, Perfil)
+✅ Etapa 9 - Painel do Vendedor (Dashboard, Produtos c/ Upload, Vendas, Loja)
+✅ Etapa 10 - Painel Administrativo (Dashboard, Gerenciar Usuários/Produtos/Pedidos, Logs)
+
+## Próxima Etapa
+⏳ Etapa 11 - Segurança, Validações e Deploy
+
+ETAPA 11 – Segurança, Validações e Deploy
+
+```
+apps/backend/src/
+├── common/
+│   ├── filters/
+│   │   └── http-exception.filter.ts
+│   ├── interceptors/
+│   │   └── response.interceptor.ts
+│   └── pipes/
+│       └── (validation pipe já existe - revisar)
+├── main.ts                         (atualizar - helmet, rate limit, cors)
+├── app.module.ts                   (atualizar - throttler module)
+├── .env.example                    (criar)
+└── Dockerfile                      (criar)
+
+apps/frontend/
+├── .env.local                      (já existe)
+├── .env.production                 (criar)
+├── middleware.ts                   (criar - proteção de rotas)
+├── Dockerfile                      (criar)
+└── next.config.js                  (atualizar - headers de segurança)
+
+raiz/
+├── docker-compose.yml              (criar)
+├── .gitignore                      (atualizar)
+└── README.md                       (atualizar - final)
+```
+
+11.1 – Backend: Segurança Global
+etc...
