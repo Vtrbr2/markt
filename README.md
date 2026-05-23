@@ -51,3 +51,6 @@ obs:
 
 2.2 Entidades
 Vamos criar as entidades dentro de cada módulo, conforme planejamento. Por enquanto, criaremos apenas as entidades, sem os módulos completos (que virão nas próximas etapas). Os arquivos ficarão em src/modules/users/entities/user.entity.ts, etc.
+
+2.3 Configurar o TypeORM no AppModule
+Precisamos importar as entidades no módulo principal para o autoLoadEntities encontrá-las. Basta ter as classes decoradas com @Entity() e importar os módulos que as contêm no futuro. Por enquanto, o autoLoadEntities: true já as localiza se os módulos forem carregados. Vamos manter assim.
