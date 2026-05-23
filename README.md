@@ -578,3 +578,8 @@ npm install helmet express-rate-limit
 npm install -D @types/express-rate-limit
 ```
 
+11.5 – Frontend: Middleware de proteção de rotas
+Arquivo: apps/frontend/src/middleware.ts
+
+Redireciona usuários não autenticados para /login ao acessar rotas protegidas.
+
