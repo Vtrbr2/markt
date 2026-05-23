@@ -476,3 +476,18 @@ apps/frontend/src/
 
 9.1 – Atualizar API Service (adicionar sellersAPI)
 etc...
+
+## Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+✅ Etapa 4 - Produtos e Categorias (CRUD, Listagem, Filtros, Paginação)
+✅ Etapa 5 - Upload de Imagens (Local + Abstração p/ Cloudinary/Supabase/Firebase/S3)
+✅ Etapa 6 - Carrinho e Pedidos (Adicionar, Finalizar, Status, Estoque)
+✅ Etapa 7 - Pagamentos (Interface desacoplada, Mercado Pago, Fake Gateway)
+✅ Etapa 8 - Frontend Público (Home, Busca, Produto, Carrinho, Checkout, Pedidos, Perfil)
+✅ Etapa 9 - Painel do Vendedor (Dashboard, Produtos c/ Upload, Vendas, Loja)
+
+## Próximas Etapas
+⏳ Etapa 10 - Painel Administrativo
+⏳ Etapa 11 - Segurança, Validações e Deploy
