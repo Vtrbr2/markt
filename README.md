@@ -75,3 +75,60 @@ Rode:
 ```
 npm run seed
 ```
+
+RESUMO
+
+# Marketplace - Projeto Completo
+
+## Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+
+## Próximas Etapas
+⏳ Etapa 4 - Produtos e Categorias
+⏳ Etapa 5 - Upload de Imagens
+⏳ Etapa 6 - Carrinho e Pedidos
+⏳ Etapa 7 - Pagamentos
+⏳ Etapa 8 - Frontend Público
+⏳ Etapa 9 - Painel do Vendedor
+⏳ Etapa 10 - Painel Administrativo
+⏳ Etapa 11 - Segurança, Validações e Deploy
+
+**🚀 ETAPA 4 – Backend de Produtos e Categorias **
+
+Agora vamos criar os módulos categories e products completos no NestJS:
+CRUD de categorias (admin cria, público lista)
+CRUD de produtos (vendedor cria/edita seus próprios, admin gerencia todos)
+Listagem pública com paginação, busca textual e filtros
+Variações de produto (cor, tamanho, etc.)
+Status do produto (ativo, pausado, vendido, em análise)
+Validações de permissão com Guards
+
+Estrutura de pastas desta etapa
+
+```
+apps/backend/src/modules/
+├── categories/
+│   ├── categories.module.ts
+│   ├── categories.controller.ts
+│   ├── categories.service.ts
+│   ├── dto/
+│   │   ├── create-category.dto.ts
+│   │   └── update-category.dto.ts
+│   └── entities/
+│       └── category.entity.ts (já existe)
+└── products/
+    ├── products.module.ts
+    ├── products.controller.ts
+    ├── products.service.ts
+    ├── dto/
+    │   ├── create-product.dto.ts
+    │   ├── update-product.dto.ts
+    │   └── product-query.dto.ts
+    └── entities/
+        ├── product.entity.ts (já existe)
+        └── product-image.entity.ts (já existe)
+```
+
+4.1 – Módulo de Categorias
