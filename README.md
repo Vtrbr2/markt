@@ -33,3 +33,8 @@ npm install
 cd ../frontend
 npm install
 ```
+
+#ETAPA 2 – Banco de Dados: Entidades, Migrações e Seeds
+Agora vamos criar todas as entidades do TypeORM, a configuração da conexão e os scripts de migração.
+
+2.1 Criar a pasta e o arquivo de data source
