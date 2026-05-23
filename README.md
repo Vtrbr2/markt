@@ -334,3 +334,23 @@ etc...
 ⏳ Etapa 9 - Painel do Vendedor
 ⏳ Etapa 10 - Painel Administrativo
 ⏳ Etapa 11 - Segurança, Validações e Deploy
+
+
+ETAPA 7 – Pagamentos (estrutura desacoplada para múltiplos gateways)
+Estrutura da Etapa 7
+
+```
+apps/backend/src/modules/payments/
+├── payments.module.ts
+├── payments.controller.ts
+├── payments.service.ts
+├── gateways/
+│   ├── payment-gateway.interface.ts     ← Interface (contrato)
+│   ├── mercado-pago.gateway.ts          ← Implementação Mercado Pago
+│   └── fake.gateway.ts                  ← Simulação para testes
+├── dto/
+│   ├── checkout.dto.ts
+│   └── webhook.dto.ts
+└── entities/
+    └── payment.entity.ts                (já existe)
+```
