@@ -583,3 +583,9 @@ Arquivo: apps/frontend/src/middleware.ts
 
 Redireciona usuários não autenticados para /login ao acessar rotas protegidas.
 
+11.6 – Frontend: next.config.js com headers de segurança
+Arquivo: apps/frontend/next.config.js
+
+11.7 – Frontend: .env.production
+Arquivo: apps/frontend/.env.production
+
