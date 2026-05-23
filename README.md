@@ -69,3 +69,9 @@ As tabelas serão criadas no banco de dados PostgreSQL.
 ```
 2.5 Seeds básicos
 
+Em apps/backend/src/database/seeds/run-seeds.ts
+
+Rode:
+```
+npm run seed
+```
