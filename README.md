@@ -136,3 +136,5 @@ apps/backend/src/modules/
 ```apps/backend/src/modules/categories/dto/update-category.dto.ts ```
 Instale o pacote @nestjs/mapped-types se ainda não tiver:
 npm install @nestjs/mapped-types
+
+4.2 – Módulo de Produtos
