@@ -21,3 +21,15 @@ marketplace/
 ├── .gitignore
 └── README.md
 ```
+#1.4 Instalação
+No terminal, na raiz do projeto:
+
+```
+# Backend
+cd apps/backend
+npm install
+
+# Frontend
+cd ../frontend
+npm install
+```
