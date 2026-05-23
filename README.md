@@ -38,3 +38,16 @@ npm install
 Agora vamos criar todas as entidades do TypeORM, a configuração da conexão e os scripts de migração.
 
 2.1 Criar a pasta e o arquivo de data source
+
+#
+
+obs:
+```
+      Arquivo: apps/backend/src/database/data-source.ts
+Atenção: Para que dotenv funcione aqui, adicione ao backend: npm install dotenv e no package.json já incluí.
+obs:
+```
+
+
+2.2 Entidades
+Vamos criar as entidades dentro de cada módulo, conforme planejamento. Por enquanto, criaremos apenas as entidades, sem os módulos completos (que virão nas próximas etapas). Os arquivos ficarão em src/modules/users/entities/user.entity.ts, etc.
