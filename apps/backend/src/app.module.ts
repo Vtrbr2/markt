@@ -10,6 +10,7 @@ import { CartModule } from './modules/cart/cart.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { PaymentsModule } from './modules/payments/payments.module';
 import { SellersModule } from './modules/sellers/sellers.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { SellersModule } from './modules/sellers/sellers.module';
         OrdersModule,
         PaymentsModule,
         SellersModule,
+        AdminModule,
       }),
     }),
     AuthModule,
