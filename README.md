@@ -67,4 +67,5 @@ bash
 npm run migration:run
 As tabelas serão criadas no banco de dados PostgreSQL.
 ```
+2.5 Seeds básicos
 
