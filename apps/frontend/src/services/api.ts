@@ -104,4 +104,14 @@ export const uploadAPI = {
   },
 };
 
+// Seller
+export const sellersAPI = {
+  getStore: () => api.get('/sellers/me'),
+  updateStore: (data: { storeName?: string; description?: string; logoUrl?: string }) =>
+    api.put('/sellers/me', data),
+  getDashboard: () => api.get('/sellers/me/dashboard'),
+  getProducts: () => api.get('/sellers/me/products'),
+  getSales: () => api.get('/orders/sales'),
+};
+
 export default api;
