@@ -248,6 +248,10 @@ export class CloudinaryProvider implements StorageProvider {
   }
 }
 ```
+E no UploadModule, trocar:
+```
+useClass: CloudinaryProvider
+```
 ## Status do Projeto
 ✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
 ✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
