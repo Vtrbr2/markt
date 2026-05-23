@@ -570,3 +570,11 @@ raiz/
 
 11.1 – Backend: Segurança Global
 etc...
+
+Instale as dependências necessárias:
+```
+cd apps/backend
+npm install helmet express-rate-limit
+npm install -D @types/express-rate-limit
+```
+
