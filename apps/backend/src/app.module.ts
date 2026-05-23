@@ -1,25 +1,33 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config'; // vamos adicionar depois, mas aqui já pré-configuramos
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { CategoriesModule } from './modules/categories/categories.module';
+import { ProductsModule } from './modules/products/products.module';
 
-// Módulos vazios que serão preenchidos nas próximas etapas
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
-      useFactory: () => ({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
         type: 'postgres',
-        host: process.env.DATABASE_HOST,
-        port: +process.env.DATABASE_PORT!,
-        username: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE_NAME,
-        autoLoadEntities: true, // carrega entidades automaticamente
-        synchronize: false, // usaremos migrações
+        host: config.get<string>('DATABASE_HOST'),
+        port: config.get<number>('DATABASE_PORT', 5432),
+        username: config.get<string>('DATABASE_USER'),
+        password: config.get<string>('DATABASE_PASSWORD'),
+        database: config.get<string>('DATABASE_NAME'),
+        autoLoadEntities: true,
+        synchronize: false,
         logging: true,
       }),
     }),
-    // Os módulos de negócio serão importados aqui futuramente
+    AuthModule,
+    UsersModule,
+    CategoriesModule,
+    ProductsModule,
   ],
 })
 export class AppModule {}
