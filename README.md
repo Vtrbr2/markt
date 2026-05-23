@@ -426,3 +426,53 @@ apps/frontend/src/
    
 
    # 8.1 – Tipagens TypeScript
+
+## Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+✅ Etapa 4 - Produtos e Categorias (CRUD, Listagem, Filtros, Paginação)
+✅ Etapa 5 - Upload de Imagens (Local + Abstração p/ Cloudinary/Supabase/Firebase/S3)
+✅ Etapa 6 - Carrinho e Pedidos (Adicionar, Finalizar, Status, Estoque)
+✅ Etapa 7 - Pagamentos (Interface desacoplada, Mercado Pago, Fake Gateway)
+✅ Etapa 8 - Frontend Público (Home, Busca, Produto, Carrinho, Checkout, Pedidos, Perfil)
+
+## Próximas Etapas
+⏳ Etapa 9 - Painel do Vendedor
+⏳ Etapa 10 - Painel Administrativo
+⏳ Etapa 11 - Segurança, Validações e Deploy
+
+9
+ETAPA 9 – Painel do Vendedor
+
+```
+apps/frontend/src/
+├── app/
+│   └── (seller)/                          ← Route group para vendedor
+│       ├── layout.tsx                     ← Layout do painel (sidebar + verificação de role)
+│       ├── painel/
+│       │   └── page.tsx                   ← Dashboard com métricas
+│       ├── produtos/
+│       │   ├── page.tsx                   ← Lista de produtos do vendedor
+│       │   ├── novo/
+│       │   │   └── page.tsx               ← Cadastro de produto com upload
+│       │   └── [id]/
+│       │       └── editar/
+│       │           └── page.tsx           ← Edição de produto
+│       ├── vendas/
+│       │   ├── page.tsx                   ← Lista de vendas (pedidos)
+│       │   └── [id]/
+│       │       └── page.tsx               ← Detalhes de uma venda
+│       └── loja/
+│           └── page.tsx                   ← Editar dados da loja
+├── components/
+│   └── seller/
+│       ├── Sidebar.tsx
+│       ├── ProductForm.tsx                ← Formulário reutilizável (criar/editar)
+│       └── ImageUploader.tsx              ← Componente de upload com preview
+└── services/
+    └── api.ts                             (atualizar - adicionar sellersAPI)
+```
+
+9.1 – Atualizar API Service (adicionar sellersAPI)
+etc...
