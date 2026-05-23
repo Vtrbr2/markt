@@ -83,6 +83,8 @@ export const ordersAPI = {
     api.post('/orders', data),
   list: () => api.get('/orders'),
   getById: (id: string) => api.get(`/orders/${id}`),
+  updateStatus: (id: string, status: string) =>
+  api.patch(`/orders/${id}/status`, { status }),
 };
 
 // Pagamentos
