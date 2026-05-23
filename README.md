@@ -132,3 +132,7 @@ apps/backend/src/modules/
 ```
 
 4.1 – Módulo de Categorias
+
+```apps/backend/src/modules/categories/dto/update-category.dto.ts ```
+Instale o pacote @nestjs/mapped-types se ainda não tiver:
+npm install @nestjs/mapped-types
