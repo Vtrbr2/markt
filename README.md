@@ -491,3 +491,35 @@ etc...
 ## Próximas Etapas
 ⏳ Etapa 10 - Painel Administrativo
 ⏳ Etapa 11 - Segurança, Validações e Deploy
+
+
+ETAPA 10 – Painel Administrativo
+
+Estrutura da Etapa 10
+
+```
+apps/backend/src/modules/admin/
+├── admin.module.ts
+├── admin.controller.ts
+├── admin.service.ts
+└── entities/
+    └── admin-log.entity.ts   (já existe)
+```
+
+Frontend:
+
+```
+apps/frontend/src/app/(admin)/
+├── layout.tsx                 ← Layout com sidebar de admin
+├── admin/
+│   └── page.tsx               ← Dashboard geral
+├── admin/usuarios/
+│   └── page.tsx               ← Gerenciar usuários
+├── admin/produtos/
+│   └── page.tsx               ← Gerenciar produtos (aprovar/reprovar)
+└── admin/pedidos/
+    └── page.tsx               ← Visualizar todos pedidos
+```
+
+10.1 – Backend: Admin Module
+etc...
