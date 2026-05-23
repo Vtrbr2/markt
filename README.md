@@ -138,3 +138,127 @@ Instale o pacote @nestjs/mapped-types se ainda não tiver:
 npm install @nestjs/mapped-types
 
 4.2 – Módulo de Produtos
+4.3 atualização do AppMOdule
+
+## Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+✅ Etapa 4 - Produtos e Categorias (CRUD, Listagem, Filtros, Paginação)
+
+## Próximas Etapas
+⏳ Etapa 5 - Upload de Imagens
+⏳ Etapa 6 - Carrinho e Pedidos
+⏳ Etapa 7 - Pagamentos
+⏳ Etapa 8 - Frontend Público
+⏳ Etapa 9 - Painel do Vendedor
+⏳ Etapa 10 - Painel Administrativo
+⏳ Etapa 11 - Segurança, Validações e Deploy
+
+ETAPA 5 – Upload de Imagens (com abstração para Cloudinary, Firebase, Supabase, S3...)
+
+```
+apps/backend/src/modules/upload/
+├── upload.module.ts
+├── upload.controller.ts
+├── upload.service.ts
+├── providers/
+│   ├── storage-provider.interface.ts    ← Interface (contrato)
+│   ├── local-storage.provider.ts        ← Implementação local
+│   └── (futuro) cloudinary.provider.ts
+│   ├── (futuro) supabase.provider.ts
+│   ├── (futuro) firebase.provider.ts
+│   ├── (futuro) s3.provider.ts
+├── dto/
+│   └── upload-response.dto.ts
+└── multer.config.ts
+```
+
+apps/backend/uploads/   ← pasta local (criada automaticamente, adicionada ao .gitignore)
+
+5.1 – Interface (contrato) do Storage Provider
+Arquivo: apps/backend/src/modules/upload/providers/storage-provider.interface.ts
+
+5.2 – Implementação Local (disco)
+Arquivo: apps/backend/src/modules/upload/providers/local-storage.provider.ts
+
+5.3 – Configuração do Multer
+Arquivo: apps/backend/src/modules/upload/multer.config.ts
+
+5.4 – Upload Service
+Arquivo: apps/backend/src/modules/upload/upload.service.ts
+
+5.5 – Upload Controller
+Arquivo: apps/backend/src/modules/upload/upload.controller.ts
+
+5.6 – Módulo de Upload (com injeção dinâmica do provider)
+Arquivo: apps/backend/src/modules/upload/upload.module.ts
+
+5.7 – Servir arquivos estáticos (local)
+
+5.8 – Atualizar .env e .gitignore
+
+5.9 – Atualizar AppModule
+
+5.10 – Como trocar para Cloudinary (exemplo futuro)
+
+Basta criar este arquivo e trocar no módulo:
+
+apps/backend/src/modules/upload/providers/cloudinary.provider.ts
+
+```
+import { Injectable } from '@nestjs/common';
+import { StorageProvider, UploadedFile } from './storage-provider.interface';
+import { v2 as cloudinary } from 'cloudinary';
+
+@Injectable()
+export class CloudinaryProvider implements StorageProvider {
+  constructor() {
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+    });
+  }
+
+  async save(file: Express.Multer.File, folder: string): Promise<UploadedFile> {
+    return new Promise((resolve, reject) => {
+      cloudinary.uploader.upload_stream(
+        { folder },
+        (error, result) => {
+          if (error) return reject(error);
+          resolve({
+            url: result.secure_url,
+            key: result.public_id,
+            filename: file.originalname,
+            mimetype: file.mimetype,
+            size: file.size,
+          });
+        },
+      ).end(file.buffer);
+    });
+  }
+
+  async delete(key: string): Promise<void> {
+    await cloudinary.uploader.destroy(key);
+  }
+
+  getUrl(key: string): string {
+    return cloudinary.url(key, { secure: true });
+  }
+}
+```
+## Status do Projeto
+✅ Etapa 1 - Setup do Monorepo (NestJS + Next.js)
+✅ Etapa 2 - Banco de Dados (TypeORM + PostgreSQL + Seeds)
+✅ Etapa 3 - Autenticação (JWT, Guards, Perfil de Usuário)
+✅ Etapa 4 - Produtos e Categorias (CRUD, Listagem, Filtros, Paginação)
+✅ Etapa 5 - Upload de Imagens (Local + Abstração p/ Cloudinary/Supabase/Firebase/S3)
+
+## Próximas Etapas
+⏳ Etapa 6 - Carrinho e Pedidos
+⏳ Etapa 7 - Pagamentos
+⏳ Etapa 8 - Frontend Público
+⏳ Etapa 9 - Painel do Vendedor
+⏳ Etapa 10 - Painel Administrativo
+⏳ Etapa 11 - Segurança, Validações e Deploy
